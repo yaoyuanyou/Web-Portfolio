@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tony's Stringfify Tool</title>
+    <link rel="icon" href="https://cdn.glitch.global/3d43383c-3e24-48ef-8ec0-3721cacc36f9/bitbug_favicon.ico?v=1697427180958" />
+
+    <!-- CSS Stylesheets -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
+    <style>
+    /* Import fonts */
+      @font-face {
+          font-family: HK Grotesk;
+          src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Regular.otf?v=1603136326027")
+            format("opentype");
+      }
+      @font-face {
+          font-family: HK Grotesk;
+          font-weight: bold;
+          src: url("https://cdn.glitch.me/605e2a51-d45f-4d87-a285-9410ad350515%2FHKGrotesk-Bold.otf?v=1603136323437")
+            format("opentype");
+      }
+      @media screen and (max-width: 600px){
+          .nav a:not(:first-child) {display: none;}
+      
+          .navControl {
+              display:flex!important;
+              width: 100%!important;
+              justify-content: space-between;
+          }
+          .icon {
+              display: inline!important;
+              color: #f4e8ce!important;
+          }
+      
+          .nav {
+              width: 100%;
+          }
+      
+          .responsive {
+              display: block!important;
+              width: 100%!important;
+          }
+      
+          .responsive a.column{
+              display: grid;
+              border-top: #3B2434 solid;
+              border-radius: 0%;
+          }
+          .responsive a.column:is(:last-child) {
+              border-bottom: #3B2434 solid;
+          }
+      
+      }
+      
+      .icon {
+          display: none;
+      }
+      
+      body {
+          font-family: HK Grotesk;  
+          background-color: #243B2B; 
+          color: #f4e8ce;
+      }
+      
+      nav {
+          background-color: #243B2B;
+          position: sticky!important;
+          top: 0px;
+          z-index: 8000;
+      }
+      
+      .bi {
+          border-radius: 50%;
+          width: 30px;
+          height: 30px;
+          color: #f4e8ce;
+      }
+      
+      .active {
+          background-color: #f4e8ce!important;
+          color: #3B2434!important;
+      }
+      
+      .nav-link {
+          color: #f4e8ce;
+          font-weight: 600;
+      }
+      
+      footer {
+          flex-direction: column;
+          align-items: center;
+        }
+      
+      a:hover {
+          color: #3B2434!important;
+      }
+      
+      .header {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 50vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    border-radius: 5px;
+    margin-top:10px;
+    width: 15vw;
+    background-color: #f4e8ce;
+}
+
+button:hover {
+    background-color: #243B2B;
+    color: #f4e8ce;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+textarea {
+    border-radius: 5px;
+    width: 50vw;
+    height: 10vh;
+}
+
+.inputButton:hover,
+.outputButton:hover {
+    background-color:#3B2434;
+}
+
+.miniText {
+    font-size: 1px;
+}
+
+.whiteText {
+    color: white;
+}
+    </style>
+
+  </head>
+  <body>
+    <nav class="navbar nav-pills justify-content-center">
+      <div class = "nav">
+        <div class = "navControl">
+          <a class="nav-link" href="#">
+            <img class="bi" width="30" height="30" src="https://cdn.glitch.global/3d43383c-3e24-48ef-8ec0-3721cacc36f9/7d0c0767994d5864b2a42f6c189b6a31.jpg?v=1697427343466"/>
+          </a>
+          <a class="nav-link icon" onclick="myFunction()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-list" viewBox="0 0 16 16">
+              <path fill-rule="evenodd" d="M2.5 12a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5zm0-4a.5.5 0 0 1 .5-.5h10a.5.5 0 0 1 0 1H3a.5.5 0 0 1-.5-.5z"/>
+            </svg>
+          </a>
+        </div>
+        <a class = "nav-link column" href="#">Home</a>
+        <a class = "nav-link column active" href="#">Portfolios</a>
+        <a class = "nav-link column" href="https://massive-heavy-reindeer.glitch.me/">Tour Blogs</a>
+        <a class = "nav-link column" href="#">About Me</a>
+        <a class = "nav-link column" href="#">Contact</a>
+      </div>
+    </nav>
+    <div class="wrapper">
+      <header class="header">
+        <h1>Tony's Stringfify Tool</h1>
+      </header>
+      <!-- wrapper -->
+      
+      <form class = "formInput">
+        <textarea class = "inputTextArea"></textarea>
+        <button type="button" class = "inputButton">Submit</button>
+      </form>
+
+      <form class = "formOutput">
+        <textarea class = "outputTextArea"></textarea>
+        <div class = "buttons">
+          <button type="button" class = "colorButton">Colors</button>
+          <button type="button" class = "sizeButton">Sizes</button>
+          <button type="button" class = "outputButton">Copy</button>
+        </div>
+      </form>
+    </div>
+          <!-- This is about where a footer goes -->
+    <footer class = "navbar justify-content-center">
+      <div>
+        <p>Yuanyou 'Tony' Yao</p>
+      </div>
+      <div>
+        <a href ="https://www.linkedin.com/in/yaoyuanyou/"><img class = "bi" src = "https://cdn.glitch.global/3d43383c-3e24-48ef-8ec0-3721cacc36f9/In-White-128%402x.png?v=1697501502526" alt = "LinkedIn Logo Link"/></a>
+        <a href ="https://github.com/yaoyuanyou"><img class = "bi" src= "https://cdn.glitch.global/3d43383c-3e24-48ef-8ec0-3721cacc36f9/github-mark-white.png?v=1697501359807" alt = "GitHub Logo Link"/></a>
+        <a href ="https://glitch.com/@yaoyuanyou"><img class = "bi" src= "https://cdn.glitch.global/3d43383c-3e24-48ef-8ec0-3721cacc36f9/images.png?v=1697500756003" alt = "Glitch Logo Link"/></a>
+      </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+    integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+    crossorigin="anonymous"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script>function myFunction() {
+      var x = document.querySelector(".nav");
+      if (x.className === "nav") {
+        x.className += " responsive";
+      } else {
+        x.className = "nav";
+      }
+    }
+    
+    $("body>div").on("click",
+    ()=>{
+      $(".responsive").removeClass("responsive");
+    }
+    );
+    
+    $("body>footer").on("click",
+    ()=>{
+      $(".responsive").removeClass("responsive");
+    }
+    );
+    
+    document.querySelector(".inputButton").addEventListener("click", () => parseFunction());
+    document.querySelector(".outputButton").addEventListener("click", () => copyFunction());
+    document.querySelector(".colorButton").addEventListener("click", () => colorFunction());
+    document.querySelector(".sizeButton").addEventListener("click", () => sizeFunction());
+    
+    function parseFunction() {
+      let data = document.querySelector(".inputTextArea").value;
+      data = JSON.stringify(data);
+      data = data.replaceAll("\\t","");
+      data = data.replaceAll("\\n","");
+      data = data.replace(/\s+/g, ' ');
+      data = data.replaceAll("\\","");
+      data = data.replaceAll("\"","");
+      document.querySelector(".outputTextArea").innerHTML = data;
+    }
+    
+    function copyFunction() {
+      // Get the text field
+      var copyText = document.querySelector(".outputTextArea");
+    
+       // Copy the text inside the text field
+      navigator.clipboard.writeText(copyText.value);
+    
+      // Alert the copied text
+      alert("Copied the text to clipboard.");
+    }
+    
+    function colorFunction() {
+      document.querySelector(".outputTextArea").classList.toggle("whiteText");
+    }
+    
+    function sizeFunction() {
+      document.querySelector(".outputTextArea").classList.toggle("miniText");
+    }</script>
+  </body>
+</html>

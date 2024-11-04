@@ -1,0 +1,52 @@
+.header {
+    text-align: center;
+}
+
+form {
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 50vw;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+button {
+    border-radius: 5px;
+    margin-top:10px;
+    width: 15vw;
+    background-color: #f4e8ce;
+}
+
+button:hover {
+    background-color: #243B2B;
+    color: #f4e8ce;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+}
+
+textarea {
+    border-radius: 5px;
+    width: 50vw;
+    height: 10vh;
+}
+
+.inputButton:hover,
+.outputButton:hover {
+    background-color:#3B2434;
+}
+
+.miniText {
+    font-size: 1px;
+}
+
+.whiteText {
+    color: white;
+}
