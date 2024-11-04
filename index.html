@@ -135,7 +135,7 @@ button:hover {
 textarea {
     border-radius: 5px;
     width: 50vw;
-    height: 10vh;
+    /* height: 10vh; */
 }
 
 .inputButton:hover,
@@ -180,12 +180,15 @@ textarea {
       <!-- wrapper -->
       
       <form class = "formInput">
-        <textarea class = "inputTextArea"></textarea>
+        <textarea class = "inputTextArea" rows="8"></textarea>
+        <div class = "buttons">
+        <button type="button" class = "cleanButton">Clean</button>
         <button type="button" class = "inputButton">Submit</button>
+        </div>
       </form>
 
       <form class = "formOutput">
-        <textarea class = "outputTextArea"></textarea>
+        <textarea class = "outputTextArea" rows="8"></textarea>
         <div class = "buttons">
           <button type="button" class = "colorButton">Colors</button>
           <button type="button" class = "sizeButton">Sizes</button>
@@ -228,12 +231,17 @@ textarea {
       $(".responsive").removeClass("responsive");
     }
     );
-    
+
+    document.querySelector(".cleanButton").addEventListener("click", () => cleanFunction());
     document.querySelector(".inputButton").addEventListener("click", () => parseFunction());
     document.querySelector(".outputButton").addEventListener("click", () => copyFunction());
     document.querySelector(".colorButton").addEventListener("click", () => colorFunction());
     document.querySelector(".sizeButton").addEventListener("click", () => sizeFunction());
     
+    function cleanFunction() {
+      document.querySelector(".inputTextArea").value = '';
+    }
+
     function parseFunction() {
       let data = document.querySelector(".inputTextArea").value;
       data = JSON.stringify(data);
